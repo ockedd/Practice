@@ -49,5 +49,28 @@ void qsortRec(int* mas, int start, int end) {
 }
 
 int main() {
+	srand(time(NULL));
+	setlocale(LC_ALL, "Russian");
+	int size;
+	int* mas;
+	int i;
+	cout << "Введите размер массива: ";
+	cin >> size;
+	cout << "\n";
+	int* mas1 = new int[size];
+	for (i = 0; i < size; i++) {
+		mas1[i] = 1 + rand() % 1001;
+		cout << mas1[i] << '\n';
+	}
+	time_t start = clock(); //время до сортировки
+	qsortRec(mas1, 0, size - 1);              //вызов функции сортировки
+	time_t stop = clock();             //время после сортировки
+	double time = (stop - start) / 1000.0;    //время сортировки
 
+	for (i = 0; i < size; i++) {
+		cout << mas1[i] << '\n';
+	}
+	cout << endl << "Время выполнения сортировки – " << time << " секунд " << endl;
+	system("pause");
+	return 0;
 	}
